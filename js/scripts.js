@@ -1,14 +1,10 @@
-function Player(name, roll, diceOne, diceTwo, computerRoll, computerScore) {
+function Player(name, roll, diceOne, diceTwo) {
   this.playerName = name;
   this.playerTurnScore = 0;
   this.playerOverallScore = 0;
   this.playerRoll = roll
   this.diceOne = diceOne;
   this.diceTwo = diceTwo;
-  this.computerRoll = computerRoll
-  this.computerScore = computerScore;
-  this.computerTurnScore = 0;
-  this.computerOverallScore
 }
 
 Player.prototype.checkScore = function() {
@@ -46,6 +42,19 @@ $(document).ready(function() {
   var playerTwo = new Player(name);
   var computer = new Player();
   var playerOneVSComputer = new Player(name);
+
+function computerTurn() {
+  console.log("computer turn is working");
+  computer.rollDice();
+  $("#computerRoll").text("You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+  computer.rollDice();
+  $("#computerRoll").append("<br>You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+  computer.bankScore();
+  $("#computerOverallTotal").text(computer.playerOverallScore);
+  computer.playerTurnScore = 0;
+  $("#computerTotal").text("Saved");
+  computer.checkScore();
+}
 
 // Player One Roll Button
   $("#playerOneButton").click(function(event) {
@@ -92,7 +101,17 @@ $(document).ready(function() {
 //Player One vs. Computer Roll Button
   $("#playerOneVSComputerButton").click(function(event) {
     event.preventDefault();
-    playerOneVSComputer.rollDiceVSComputer()
+    playerOneVSComputer.rollDice()
+    console.log(playerOneVSComputer.playerRoll + " is the player's total");
+    if (playerOneVSComputer.playerRoll == 2) {
+      alert("SNAKE EYES. Total score back to 0. :(")
+      computerTurn();
+    } else if (playerOneVSComputer.diceOne === 1 || playerOneVSComputer.diceTwo === 1) {
+      console.log("One is reached on player roll");
+      playerOneVSComputer.playerTurnScore = 0;
+      alert("Turn over. :( You rolled a 1.")
+      computerTurn();
+    }
     var playerOneVSComputerName = $("#playerOneVSComputer").val()
     $("#playerOneVSComputerName").text(playerOneVSComputerName);
     $("#playerOneVSComputerRoll").text("You rolled a " + playerOneVSComputer.diceOne + " and " + playerOneVSComputer.diceTwo);
