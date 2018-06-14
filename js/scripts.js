@@ -43,32 +43,72 @@ $(document).ready(function() {
   var computer = new Player();
   var playerOneVSComputer = new Player(name);
 
-function computerTurn() {
-  console.log("computer turn is working");
-  computer.rollDice();
-  $("#computerRoll").text("You rolled a " + computer.diceOne + " and " + computer.diceTwo)
-  if (computer.playerRoll == 2) {
-    computer.playerOverallScore = 0;
-    computer.playerTurnScore = 0;
-  } else if (computer.diceOne === 1 || computer.diceTwo === 1) {
-    computer.playerTurnScore = 0;
-  } else {
+  $("#returnToHome").click(function(event) {
+    event.preventDefault();
+    $(".one-player-mode").hide();
+    $(".two-player-mode").hide();
+    $(".homepage").show();
+    $(".rules-container").show();
+    $(".mode-choice").show();
+    $(".p1p2names").show();
+    $("#rules-button").hide();
+    $("#returnToHome").hide();
+  });
+
+  $("#onePlayerMode").click(function(event) {
+    event.preventDefault();
+    $(".rules-container").hide();
+    $(".one-player-mode").show();
+    $(".two-player-mode").hide();
+    $("#rules-button").show();
+    $("#returnToHome").show();
+    var playerOneVSComputerName = $("#playerOne").val()
+    $("#playerOneVSComputerName").text(playerOneVSComputerName);
+    $(".mode-choice").hide();
+    $(".p1p2names").hide();
+  });
+
+  $("#twoPlayerMode").click(function(event) {
+    event.preventDefault();
+    $(".rules-container").hide();
+    $(".two-player-mode").show();
+    $(".one-player-mode").hide();
+    $("#rules-button").show();
+    $("#returnToHome").show();
+    var playerOneName = $("#playerOne").val()
+    $("#playerOneName").text(playerOneName);
+    var playerTwoName = $("#playerTwo").val()
+    $("#playerTwoName").text(playerTwoName);
+    $(".mode-choice").hide();
+    $(".p1p2names").hide();
+  });
+
+  function computerTurn() {
+    console.log("computer turn is working");
     computer.rollDice();
-    $("#computerRoll").append("<br>You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+    $("#computerRoll").text("You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+    if (computer.playerRoll == 2) {
+      computer.playerOverallScore = 0;
+      computer.playerTurnScore = 0;
+    } else if (computer.diceOne === 1 || computer.diceTwo === 1) {
+      computer.playerTurnScore = 0;
+    } else {
+      computer.rollDice();
+      $("#computerRoll").append("<br>You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+    }
+    computer.bankScore();
+    $("#computerOverallTotal").text(computer.playerOverallScore);
+    computer.playerTurnScore = 0;
+    $("#computerTotal").text("Saved");
+    computer.checkScore();
   }
-  computer.bankScore();
-  $("#computerOverallTotal").text(computer.playerOverallScore);
-  computer.playerTurnScore = 0;
-  $("#computerTotal").text("Saved");
-  computer.checkScore();
-}
 
 // Player One Roll Button
   $("#playerOneButton").click(function(event) {
     event.preventDefault();
     playerOne.rollDice()
-    var playerOneName = $("#playerOne").val()
-    $("#playerOneName").text(playerOneName);
+    // var playerOneName = $("#playerOne").val()
+    // $("#playerOneName").text(playerOneName);
     $("#playerOneRoll").text("You rolled a " + playerOne.diceOne + " and " + playerOne.diceTwo);
     $("#playerOneTotal").text(playerOne.playerTurnScore);
     $("#playerOneOverallTotal").text(playerOne.playerOverallScore);
@@ -88,8 +128,8 @@ function computerTurn() {
   $("#playerTwoButton").click(function(event) {
     event.preventDefault();
     playerTwo.rollDice()
-    var playerTwoName = $("#playerTwo").val()
-    $("#playerTwoName").text(playerTwoName);
+    // var playerTwoName = $("#playerTwo").val()
+    // $("#playerTwoName").text(playerTwoName);
     $("#playerTwoRoll").text("You rolled a " + playerTwo.diceOne + " and " + playerTwo.diceTwo)
     $("#playerTwoTotal").text(playerTwo.playerTurnScore);
     $("#playerTwoOverallTotal").text(playerTwo.playerOverallScore);
@@ -118,8 +158,8 @@ function computerTurn() {
       playerOneVSComputer.playerTurnScore = 0;
       computerTurn();
     }
-    var playerOneVSComputerName = $("#playerOneVSComputer").val()
-    $("#playerOneVSComputerName").text(playerOneVSComputerName);
+    // var playerOneVSComputerName = $("#playerOneVSComputer").val()
+    // $("#playerOneVSComputerName").text(playerOneVSComputerName);
     $("#playerOneVSComputerRoll").text("You rolled a " + playerOneVSComputer.diceOne + " and " + playerOneVSComputer.diceTwo);
     $("#playerOneVSComputerTotal").text(playerOneVSComputer.playerTurnScore);
   });
