@@ -31,7 +31,7 @@ Player.prototype.rollDice = function() {
     alert("Turn over. :( You rolled a 1.")
   } else if (this.diceOne === this.diceTwo) {
     this.playerTurnScore += (this.playerRoll += this.playerRoll);
-    alert("DOUBLE POINTS! You rolled a matching pair.")
+    alert(this.playerName + "DOUBLE POINTS! You rolled a matching pair.")
   } else {
     this.playerTurnScore += this.playerRoll;
   }
@@ -47,8 +47,15 @@ function computerTurn() {
   console.log("computer turn is working");
   computer.rollDice();
   $("#computerRoll").text("You rolled a " + computer.diceOne + " and " + computer.diceTwo)
-  computer.rollDice();
-  $("#computerRoll").append("<br>You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+  if (computer.playerRoll == 2) {
+    computer.playerOverallScore = 0;
+    computer.playerTurnScore = 0;
+  } else if (computer.diceOne === 1 || computer.diceTwo === 1) {
+    computer.playerTurnScore = 0;
+  } else {
+    computer.rollDice();
+    $("#computerRoll").append("<br>You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+  }
   computer.bankScore();
   $("#computerOverallTotal").text(computer.playerOverallScore);
   computer.playerTurnScore = 0;
@@ -109,7 +116,6 @@ function computerTurn() {
     } else if (playerOneVSComputer.diceOne === 1 || playerOneVSComputer.diceTwo === 1) {
       console.log("One is reached on player roll");
       playerOneVSComputer.playerTurnScore = 0;
-      alert("Turn over. :( You rolled a 1.")
       computerTurn();
     }
     var playerOneVSComputerName = $("#playerOneVSComputer").val()
@@ -126,14 +132,6 @@ function computerTurn() {
     playerOneVSComputer.playerTurnScore = 0;
     $("#playerOneVSComputerTotal").text("Saved");
     playerOneVSComputer.checkScore();
-    computer.rollDice();
-    $("#computerRoll").text("You rolled a " + computer.diceOne + " and " + computer.diceTwo)
-    computer.rollDice();
-    $("#computerRoll").append("<br>You rolled a " + computer.diceOne + " and " + computer.diceTwo)
-    computer.bankScore();
-    $("#computerOverallTotal").text(computer.playerOverallScore);
-    computer.playerTurnScore = 0;
-    $("#computerTotal").text("Saved");
-    computer.checkScore();
+    computerTurn()
   });
 });
