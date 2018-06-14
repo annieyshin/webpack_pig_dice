@@ -1,10 +1,14 @@
-function Player(name, roll, diceOne, diceTwo) {
+function Player(name, roll, diceOne, diceTwo, computerRoll, computerScore) {
   this.playerName = name;
   this.playerTurnScore = 0;
   this.playerOverallScore = 0;
   this.playerRoll = roll
   this.diceOne = diceOne;
   this.diceTwo = diceTwo;
+  this.computerRoll = computerRoll
+  this.computerScore = computerScore;
+  this.computerTurnScore = 0;
+  this.computerOverallScore
 }
 
 Player.prototype.checkScore = function() {
@@ -40,6 +44,10 @@ Player.prototype.rollDice = function() {
 $(document).ready(function() {
   var playerOne = new Player(name);
   var playerTwo = new Player(name);
+  var computer = new Player();
+  var playerOneVSComputer = new Player(name);
+
+// Player One Roll Button
   $("#playerOneButton").click(function(event) {
     event.preventDefault();
     playerOne.rollDice()
@@ -47,8 +55,10 @@ $(document).ready(function() {
     $("#playerOneName").text(playerOneName);
     $("#playerOneRoll").text("You rolled a " + playerOne.diceOne + " and " + playerOne.diceTwo);
     $("#playerOneTotal").text(playerOne.playerTurnScore);
+    $("#playerOneOverallTotal").text(playerOne.playerOverallScore);
   });
 
+// Player One Hold Button
   $("#playerOneHold").click(function(event) {
     event.preventDefault();
     playerOne.bankScore();
@@ -58,6 +68,7 @@ $(document).ready(function() {
     playerOne.checkScore();
   });
 
+// Player Two Roll Button
   $("#playerTwoButton").click(function(event) {
     event.preventDefault();
     playerTwo.rollDice()
@@ -65,8 +76,10 @@ $(document).ready(function() {
     $("#playerTwoName").text(playerTwoName);
     $("#playerTwoRoll").text("You rolled a " + playerTwo.diceOne + " and " + playerTwo.diceTwo)
     $("#playerTwoTotal").text(playerTwo.playerTurnScore);
+    $("#playerTwoOverallTotal").text(playerTwo.playerOverallScore);
   });
 
+// Player Two Hold Button
   $("#playerTwoHold").click(function(event) {
     event.preventDefault();
     playerTwo.bankScore();
@@ -74,5 +87,34 @@ $(document).ready(function() {
     playerTwo.playerTurnScore = 0;
     $("#playerTwoTotal").text("Saved");
     playerTwo.checkScore();
+  });
+
+//Player One vs. Computer Roll Button
+  $("#playerOneVSComputerButton").click(function(event) {
+    event.preventDefault();
+    playerOneVSComputer.rollDiceVSComputer()
+    var playerOneVSComputerName = $("#playerOneVSComputer").val()
+    $("#playerOneVSComputerName").text(playerOneVSComputerName);
+    $("#playerOneVSComputerRoll").text("You rolled a " + playerOneVSComputer.diceOne + " and " + playerOneVSComputer.diceTwo);
+    $("#playerOneVSComputerTotal").text(playerOneVSComputer.playerTurnScore);
+  });
+
+//Player One vs. Computer Hold Button
+  $("#playerOneVSComputerHold").click(function(event) {
+    event.preventDefault();
+    playerOneVSComputer.bankScore();
+    $("#playerOneVSComputerOverallTotal").text(playerOneVSComputer.playerOverallScore);
+    playerOneVSComputer.playerTurnScore = 0;
+    $("#playerOneVSComputerTotal").text("Saved");
+    playerOneVSComputer.checkScore();
+    computer.rollDice();
+    $("#computerRoll").text("You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+    computer.rollDice();
+    $("#computerRoll").append("<br>You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+    computer.bankScore();
+    $("#computerOverallTotal").text(computer.playerOverallScore);
+    computer.playerTurnScore = 0;
+    $("#computerTotal").text("Saved");
+    computer.checkScore();
   });
 });

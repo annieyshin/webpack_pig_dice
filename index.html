@@ -17,6 +17,7 @@
   <body>
     <div class="container">
       <form class="center" id="pigDiceForm">
+        <!-- Two Player Game -->
         <div class="row">
           <div class="col-md-6">
             <input id="playerOne" type="text" name="" value="">
@@ -37,6 +38,28 @@
             <button id="playerTwoHold" type="submit" name="button" class="btn btn-primary">Hold</button>
           </div>
         </div>
+
+        <!-- One Player Game -->
+        <div class="row">
+          <div class="col-md-6">
+            <input id="playerOneVSComputer" type="text" name="" value="">
+            <p>Player: <span id="playerOneVSComputerName"></span></p>
+            <p><span id="playerOneVSComputerRoll"></span></p>
+            <p>Current score: <span id="playerOneVSComputerTotal"></span></p>
+            <p>Total score: <span id="playerOneVSComputerOverallTotal"></span></p>
+            <button id="playerOneVSComputerButton" type="submit" name="button" class="btn btn-primary">Roll</button>
+            <button id="playerOneVSComputerHold" type="submit" name="button" class="btn btn-primary">Hold</button>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Robot Nemesis</strong></p>
+            <p><span id="computerRoll"></span></p>
+            <p>Current score: <span id="computerTotal"></span></p>
+            <p>Total score: <span id="computerOverallTotal"></span></p>
+            <!-- <button id="playerTwoButton" type="submit" name="button" class="btn btn-primary">Roll</button>
+            <button id="playerTwoHold" type="submit" name="button" class="btn btn-primary">Hold</button> -->
+          </div>
+        </div>
+      </div>
       </form>
     </div>
     <footer>
