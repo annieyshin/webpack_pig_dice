@@ -29,10 +29,6 @@ footer {
   display: none;
 }
 
-.p1p2names {
-  margin: 10px 0px;
-}
-
 .playerNames {
   font-size: 1.5em;
   text-align: center;
@@ -43,6 +39,7 @@ footer {
   box-shadow: 4px 5px 6px rgba(34,34,34,0.6);
   width: 80%;
   margin: auto;
+  margin-bottom: 15px;
 }
 
 .card {
@@ -83,5 +80,6 @@ footer {
 }
 
 [placeholder] {
+  text-align: center;
   text-overflow: ellipsis;
 }
