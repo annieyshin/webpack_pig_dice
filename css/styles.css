@@ -20,7 +20,7 @@ footer {
   padding: 10px;
   background-color: rgba(22, 22, 22, 0.6);
   color: white;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
 }
