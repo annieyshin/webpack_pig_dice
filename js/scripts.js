@@ -43,42 +43,29 @@ $(document).ready(function() {
 
   $("#returnToHome").click(function(event) {
     event.preventDefault();
-    $(".one-player-mode").hide();
-    $(".two-player-mode").hide();
-    $(".homepage").show();
-    $(".rules-container").show();
-    $(".mode-choice").show();
-    $(".p1p2names").show();
-    $("#rules-button").hide();
-    $("#returnToHome").hide();
+    $(".one-player-mode, .two-player-mode, #rules-button, #returnToHome").hide();
+    $(".homepage, .rules-container, .mode-choice, .p1p2names").show();
+
   });
 
   $("#onePlayerMode").click(function(event) {
     event.preventDefault();
-    $(".rules-container").hide();
-    $(".one-player-mode").show();
-    $(".two-player-mode").hide();
-    $("#rules-button").show();
-    $("#returnToHome").show();
+    $(".rules-container, .two-player-mode, .mode-choice, .p1p2names").hide();
+    $(".one-player-mode, #rules-button, #returnToHome").show();
     var playerOneVSComputerName = $("#playerOne").val()
     $("#playerOneVSComputerName").text(playerOneVSComputerName);
-    $(".mode-choice").hide();
-    $(".p1p2names").hide();
+
   });
 
   $("#twoPlayerMode").click(function(event) {
     event.preventDefault();
-    $(".rules-container").hide();
-    $(".two-player-mode").show();
-    $(".one-player-mode").hide();
-    $("#rules-button").show();
-    $("#returnToHome").show();
+    $(".rules-container, .one-player-mode, .mode-choice, .p1p2names").hide();
+    $(".two-player-mode, #rules-button, #returnToHome").show();
     var playerOneName = $("#playerOne").val()
     $("#playerOneName").text(playerOneName);
     var playerTwoName = $("#playerTwo").val()
     $("#playerTwoName").text(playerTwoName);
-    $(".mode-choice").hide();
-    $(".p1p2names").hide();
+
   });
 
   function computerTurn() {
