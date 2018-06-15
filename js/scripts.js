@@ -44,8 +44,8 @@ $(document).ready(function() {
   $("#returnToHome").click(function(event) {
     event.preventDefault();
     $(".one-player-mode, .two-player-mode, #rules-button, #returnToHome").each(function(){
-      $(this).fadeOut(1000, function(){
-       $('.homepage, .rules-container, .mode-choice, .p1p2names').fadeIn(1000);
+      $(this).fadeOut(1, function(){
+       $('.homepage, .rules-container, .mode-choice, .p1p2names').fadeIn(600);
       });
     });
     // $(".homepage, .rules-container, .mode-choice, .p1p2names").show();
@@ -54,8 +54,11 @@ $(document).ready(function() {
 
   $("#onePlayerMode").click(function(event) {
     event.preventDefault();
-    $(".rules-container, .two-player-mode, .mode-choice, .p1p2names").hide();
-    $(".one-player-mode, #rules-button, #returnToHome").show();
+    $(".rules-container, .two-player-mode, .mode-choice, .p1p2names").each(function(){
+      $(this).fadeOut(1, function(){
+        $(".one-player-mode, #rules-button, #returnToHome").fadeIn(600);
+      })
+    });
     var playerOneVSComputerName = $("#playerOne").val()
     $("#playerOneVSComputerName").text(playerOneVSComputerName);
 
@@ -63,8 +66,11 @@ $(document).ready(function() {
 
   $("#twoPlayerMode").click(function(event) {
     event.preventDefault();
-    $(".rules-container, .one-player-mode, .mode-choice, .p1p2names").hide();
-    $(".two-player-mode, #rules-button, #returnToHome").show();
+    $(".rules-container, .one-player-mode, .mode-choice, .p1p2names").each(function(){
+      $(this).fadeOut(1, function(){
+        $(".two-player-mode, #rules-button, #returnToHome").fadeIn(600);
+      })
+    });
     var playerOneName = $("#playerOne").val()
     $("#playerOneName").text(playerOneName);
     var playerTwoName = $("#playerTwo").val()
