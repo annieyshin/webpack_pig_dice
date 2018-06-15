@@ -34,6 +34,11 @@ footer {
   margin: 10px 0px;
 }
 
+.playerNames {
+  font-size: 1.5em;
+  text-align: center;
+}
+
 .form-control {
   border-color: #ef58c9;
   box-shadow: 4px 5px 6px rgba(34,34,34,0.6);
