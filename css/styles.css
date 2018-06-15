@@ -59,12 +59,13 @@ footer {
 }
 
 .rules-container {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .nav-buttons {
   margin: auto;
   text-align: center;
+  margin: 0px 2px;
 }
 
 .btn-primary {
