@@ -22,12 +22,14 @@ h1 {
 }
 
 .p1p2names {
-  margin-bottom: 20px;
+  margin: 10px 0px;
 }
 
 .form-control {
   border-color: #ef58c9;
   box-shadow: 4px 5px 6px rgba(34,34,34,0.6);
+  width: 80%;
+  margin: auto;
 }
 
 .card {
@@ -36,11 +38,24 @@ h1 {
               url('../img/pig.jpg') no-repeat;
   background-size: cover;
   box-shadow: 4px 5px 6px rgba(34,34,34,0.6);
-  padding: 30px 10px;
+  padding: 25px 15px;
   border-radius: 9px;
-  width: 80%;
+  width: 90%;
   margin: auto;
   margin-bottom: 20px;
+}
+
+.pageCenter {
+  text-align: center;
+}
+
+.rules-container {
+  margin-top: 20px;
+}
+
+.nav-buttons {
+  margin: auto;
+  text-align: center;
 }
 
 .btn-primary {
@@ -51,4 +66,8 @@ h1 {
 .btn:hover {
   background-color: #94ecef;
   border-color: #94ecef;
+}
+
+[placeholder] {
+  text-overflow: ellipsis;
 }
