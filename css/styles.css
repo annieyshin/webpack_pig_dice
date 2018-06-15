@@ -24,6 +24,7 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+  margin-top: 20px;
 }
 
 .one-player-mode, .two-player-mode, #rules-button, #returnToHome {
