@@ -17,14 +17,12 @@ h1 {
 }
 
 footer {
-  /*box-sizing: border-box;*/
   padding: 10px;
   background-color: rgba(22, 22, 22, 0.6);
   color: white;
-  position: relative;
+  position: absolute;
   bottom: 0;
-  /*width: 100%;*/
-  /*margin-top: 20px;*/
+  width: 100%;
 }
 
 .one-player-mode, .two-player-mode, #rules-button, #returnToHome {
