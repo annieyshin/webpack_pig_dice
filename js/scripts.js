@@ -43,8 +43,12 @@ $(document).ready(function() {
 
   $("#returnToHome").click(function(event) {
     event.preventDefault();
-    $(".one-player-mode, .two-player-mode, #rules-button, #returnToHome").hide();
-    $(".homepage, .rules-container, .mode-choice, .p1p2names").show();
+    $(".one-player-mode, .two-player-mode, #rules-button, #returnToHome").each(function(){
+      $(this).fadeOut(1000, function(){
+       $('.homepage, .rules-container, .mode-choice, .p1p2names').fadeIn(1000);
+      });
+    });
+    // $(".homepage, .rules-container, .mode-choice, .p1p2names").show();
 
   });
 
