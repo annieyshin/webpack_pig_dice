@@ -19,8 +19,6 @@ Player.prototype.bankScore = function() {
 Player.prototype.rollDice = function() {
   this.diceOne = Math.floor((Math.random() * 6) + 1)
   this.diceTwo = Math.floor((Math.random() * 6) + 1)
-  console.log(this.diceOne);
-  console.log(this.diceTwo);
   this.playerRoll = this.diceOne + this.diceTwo
   if (this.playerRoll == 2) {
     this.playerOverallScore = 0;
@@ -84,7 +82,6 @@ $(document).ready(function() {
   });
 
   function computerTurn() {
-    console.log("computer turn is working");
     computer.rollDice();
     $("#computerRoll").text("You rolled a " + computer.diceOne + " and " + computer.diceTwo)
     if (computer.playerRoll == 2) {
@@ -107,8 +104,6 @@ $(document).ready(function() {
   $("#playerOneButton").click(function(event) {
     event.preventDefault();
     playerOne.rollDice()
-    // var playerOneName = $("#playerOne").val()
-    // $("#playerOneName").text(playerOneName);
     $("#playerOneRoll").text("You rolled a " + playerOne.diceOne + " and " + playerOne.diceTwo);
     $("#playerOneTotal").text(playerOne.playerTurnScore);
     $("#playerOneOverallTotal").text(playerOne.playerOverallScore);
@@ -128,8 +123,6 @@ $(document).ready(function() {
   $("#playerTwoButton").click(function(event) {
     event.preventDefault();
     playerTwo.rollDice()
-    // var playerTwoName = $("#playerTwo").val()
-    // $("#playerTwoName").text(playerTwoName);
     $("#playerTwoRoll").text("You rolled a " + playerTwo.diceOne + " and " + playerTwo.diceTwo)
     $("#playerTwoTotal").text(playerTwo.playerTurnScore);
     $("#playerTwoOverallTotal").text(playerTwo.playerOverallScore);
@@ -149,17 +142,13 @@ $(document).ready(function() {
   $("#playerOneVSComputerButton").click(function(event) {
     event.preventDefault();
     playerOneVSComputer.rollDice()
-    console.log(playerOneVSComputer.playerRoll + " is the player's total");
     if (playerOneVSComputer.playerRoll == 2) {
       alert("SNAKE EYES. Total score back to 0. :(")
       computerTurn();
     } else if (playerOneVSComputer.diceOne === 1 || playerOneVSComputer.diceTwo === 1) {
-      console.log("One is reached on player roll");
       playerOneVSComputer.playerTurnScore = 0;
       computerTurn();
     }
-    // var playerOneVSComputerName = $("#playerOneVSComputer").val()
-    // $("#playerOneVSComputerName").text(playerOneVSComputerName);
     $("#playerOneVSComputerRoll").text("You rolled a " + playerOneVSComputer.diceOne + " and " + playerOneVSComputer.diceTwo);
     $("#playerOneVSComputerTotal").text(playerOneVSComputer.playerTurnScore);
   });
