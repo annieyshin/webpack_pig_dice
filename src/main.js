@@ -1,5 +1,7 @@
 import { Player } from './js/scripts';
 import './css/styles.css';
+import $ from 'jquery';
+import 'bootstrap';
 
 $(document).ready(function() {
   var playerOne = new Player(name);
