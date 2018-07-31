@@ -1,5 +1,5 @@
 import { Player } from './js/scripts';
-import './css/styles.css'
+import './css/styles.css';
 
 $(document).ready(function() {
   var playerOne = new Player(name);
@@ -11,7 +11,7 @@ $(document).ready(function() {
     event.preventDefault();
     $(".one-player-mode, .two-player-mode, #rules-button, #returnToHome").each(function(){
       $(this).fadeOut(0, function(){
-       $('.homepage, .rules-container, .mode-choice, .p1p2names').fadeIn(600);
+        $('.homepage, .rules-container, .mode-choice, .p1p2names').fadeIn(600);
       });
     });
     // $(".homepage, .rules-container, .mode-choice, .p1p2names").show();
@@ -23,9 +23,9 @@ $(document).ready(function() {
     $(".rules-container, .two-player-mode, .mode-choice, .p1p2names").each(function(){
       $(this).fadeOut(0, function(){
         $(".one-player-mode, #rules-button, #returnToHome").fadeIn(600);
-      })
+      });
     });
-    var playerOneVSComputerName = $("#playerOne").val()
+    var playerOneVSComputerName = $("#playerOne").val();
     $("#playerOneVSComputerName").text(playerOneVSComputerName);
 
   });
@@ -35,18 +35,18 @@ $(document).ready(function() {
     $(".rules-container, .one-player-mode, .mode-choice, .p1p2names").each(function(){
       $(this).fadeOut(0, function(){
         $(".two-player-mode, #rules-button, #returnToHome").fadeIn(600);
-      })
+      });
     });
-    var playerOneName = $("#playerOne").val()
+    var playerOneName = $("#playerOne").val();
     $("#playerOneName").text(playerOneName);
-    var playerTwoName = $("#playerTwo").val()
+    var playerTwoName = $("#playerTwo").val();
     $("#playerTwoName").text(playerTwoName);
 
   });
 
   function computerTurn() {
     computer.rollDice();
-    $("#computerRoll").text("You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+    $("#computerRoll").text("You rolled a " + computer.diceOne + " and " + computer.diceTwo);
     if (computer.playerRoll == 2) {
       computer.playerOverallScore = 0;
       computer.playerTurnScore = 0;
@@ -54,7 +54,7 @@ $(document).ready(function() {
       computer.playerTurnScore = 0;
     } else {
       computer.rollDice();
-      $("#computerRoll").append("<br>You rolled a " + computer.diceOne + " and " + computer.diceTwo)
+      $("#computerRoll").append("<br>You rolled a " + computer.diceOne + " and " + computer.diceTwo);
     }
     computer.bankScore();
     $("#computerOverallTotal").text(computer.playerOverallScore);
@@ -63,16 +63,16 @@ $(document).ready(function() {
     computer.checkScore();
   }
 
-// Player One Roll Button
+  // Player One Roll Button
   $("#playerOneButton").click(function(event) {
     event.preventDefault();
-    playerOne.rollDice()
+    playerOne.rollDice();
     $("#playerOneRoll").text("You rolled a " + playerOne.diceOne + " and " + playerOne.diceTwo);
     $("#playerOneTotal").text(playerOne.playerTurnScore);
     $("#playerOneOverallTotal").text(playerOne.playerOverallScore);
   });
 
-// Player One Hold Button
+  // Player One Hold Button
   $("#playerOneHold").click(function(event) {
     event.preventDefault();
     playerOne.bankScore();
@@ -82,16 +82,16 @@ $(document).ready(function() {
     playerOne.checkScore();
   });
 
-// Player Two Roll Button
+  // Player Two Roll Button
   $("#playerTwoButton").click(function(event) {
     event.preventDefault();
-    playerTwo.rollDice()
-    $("#playerTwoRoll").text("You rolled a " + playerTwo.diceOne + " and " + playerTwo.diceTwo)
+    playerTwo.rollDice();
+    $("#playerTwoRoll").text("You rolled a " + playerTwo.diceOne + " and " + playerTwo.diceTwo);
     $("#playerTwoTotal").text(playerTwo.playerTurnScore);
     $("#playerTwoOverallTotal").text(playerTwo.playerOverallScore);
   });
 
-// Player Two Hold Button
+  // Player Two Hold Button
   $("#playerTwoHold").click(function(event) {
     event.preventDefault();
     playerTwo.bankScore();
@@ -101,12 +101,12 @@ $(document).ready(function() {
     playerTwo.checkScore();
   });
 
-//Player One vs. Computer Roll Button
+  //Player One vs. Computer Roll Button
   $("#playerOneVSComputerButton").click(function(event) {
     event.preventDefault();
-    playerOneVSComputer.rollDice()
+    playerOneVSComputer.rollDice();
     if (playerOneVSComputer.playerRoll == 2) {
-      alert("SNAKE EYES. Total score back to 0. :(")
+      alert("SNAKE EYES. Total score back to 0. :(");
       computerTurn();
     } else if (playerOneVSComputer.diceOne === 1 || playerOneVSComputer.diceTwo === 1) {
       playerOneVSComputer.playerTurnScore = 0;
@@ -116,7 +116,7 @@ $(document).ready(function() {
     $("#playerOneVSComputerTotal").text(playerOneVSComputer.playerTurnScore);
   });
 
-//Player One vs. Computer Hold Button
+  //Player One vs. Computer Hold Button
   $("#playerOneVSComputerHold").click(function(event) {
     event.preventDefault();
     playerOneVSComputer.bankScore();
@@ -124,6 +124,6 @@ $(document).ready(function() {
     playerOneVSComputer.playerTurnScore = 0;
     $("#playerOneVSComputerTotal").text("Saved");
     playerOneVSComputer.checkScore();
-    computerTurn()
+    computerTurn();
   });
 });
